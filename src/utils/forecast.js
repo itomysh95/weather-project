@@ -12,9 +12,11 @@ const forecast = (lat,lon,callback)=>{
             callback('longitude and/or latitude are incorrect!',undefined)
         }
         else{
+            console.log(body)
             callback(undefined,{
                 temp : body.currently.temperature,
                 precipProb : body.currently.precipProbability,
+                summary: body.daily.summary
             })
         }
     })

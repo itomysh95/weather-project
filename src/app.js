@@ -61,7 +61,7 @@ app.get('/weather',(req,res)=>{
             return res.send({ error })
         }
 
-        forecast(latitude,longitude,(error,{temp, precipProb}={})=>{
+        forecast(latitude,longitude,(error,{temp, precipProb, summary}={})=>{
             if(error){
                 return res.send({ error })
             }
@@ -69,7 +69,8 @@ app.get('/weather',(req,res)=>{
                 temperature: temp,
                 precip: precipProb,
                 location,
-                address: req.query.address
+                address: req.query.address,
+                summary: "Today's summary is: "+summary,
             })
         })
     })

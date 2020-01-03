@@ -9,7 +9,7 @@ const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const errorMessage = document.querySelector('#error-message')
 const weatherMessage = document.querySelector('#weather-message')
-
+const summaryMessage = document.querySelector('#summary-message')
 
 
 weatherForm.addEventListener('submit',(e)=>{
@@ -18,6 +18,7 @@ weatherForm.addEventListener('submit',(e)=>{
     const location = search.value
     errorMessage.textContent = "Loading..."
     weatherMessage.textContent = " "
+    summaryMessage.textContent = " "
 
     if(location){
         fetch('/weather?address='+location).then((response)=>{
@@ -28,6 +29,7 @@ weatherForm.addEventListener('submit',(e)=>{
             else{
                 errorMessage.textContent = data.location
                 weatherMessage.textContent = "the tempeprature is "+data.temperature+" the precip is "+data.precip
+                summaryMessage.textContent = data.summary
             }
             })
     }   )
